@@ -1,0 +1,14 @@
+package:
+    type:           yii2-extension
+    name:           yii2-menus
+    title:          Menus for Yii2
+    headline:       Yii2 Menus
+    keywords:       yii2, menus
+    namespace:      hiqdev\menumanager
+    description:    |
+        Provides:
+
+        - menu definition class: `hiqdev\yii2\menus\Menu`
+        - menu column for grid: `hiqdev\yii2\menus\grid\MenuColumn`
+        - advanced menu widget: `hiqdev\yii2\menus\widgets\Menu`
+        - menu button widget: `hiqdev\yii2\menus\widgets\MenuButton`
