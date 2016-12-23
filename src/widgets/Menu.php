@@ -34,7 +34,7 @@ class Menu extends \yii\widgets\Menu
     /**
      * @var string default icon class
      */
-    public $defaultIcon = 'fa-angle-double-right';
+    public $defaultIcon = null;
 
     /**
      * {@inheritdoc}
