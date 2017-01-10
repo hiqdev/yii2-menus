@@ -76,7 +76,7 @@ class Menu extends \yii\widgets\Menu
     {
         if ($route) {
             if (strpos($route, '/') !== false) {
-                list($id, $route) = explode('/', $route, 2);
+                list($id, $route) = explode('/', ltrim($route, '/'), 2);
             } else {
                 $id = $route;
                 $route = '';
@@ -100,7 +100,8 @@ class Menu extends \yii\widgets\Menu
             $tag = ArrayHelper::remove($options, 'tag', 'li');
             $class = [];
             $parentModuleUrl = isset($item['items']) ? $item : null;
-            if ($item['active'] || $this->guessModule($item, $parentModuleUrl['url'][0])) {
+            $isAccordionOpen = $this->guessModule($item, $parentModuleUrl['url'][0]);
+            if ($item['active'] || $isAccordionOpen) {
                 $class[] = $this->activeCssClass;
             }
             if ($i === 0 && $this->firstItemCssClass !== null) {
