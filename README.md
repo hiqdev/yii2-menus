@@ -7,6 +7,7 @@
 [![Build Status](https://img.shields.io/travis/hiqdev/yii2-menus.svg)](https://travis-ci.org/hiqdev/yii2-menus)
 [![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/hiqdev/yii2-menus.svg)](https://scrutinizer-ci.com/g/hiqdev/yii2-menus/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hiqdev/yii2-menus.svg)](https://scrutinizer-ci.com/g/hiqdev/yii2-menus/)
+[![Dependency Status](https://www.versioneye.com/php/hiqdev:yii2-menus/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:yii2-menus/dev-master)
 
 Provides:
 

@@ -4,7 +4,6 @@ package:
     title:          Menus for Yii2
     headline:       Yii2 Menus
     keywords:       yii2, menus
-    namespace:      hiqdev\yii2\menus
     description:    |
         Provides:
 
