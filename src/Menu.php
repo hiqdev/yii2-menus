@@ -1,6 +1,6 @@
 <?php
 /**
- * Menus for Yii2
+ * Menus for Yii2.
  *
  * @link      https://github.com/hiqdev/yii2-menus
  * @package   yii2-menus
