@@ -68,6 +68,12 @@ class Menu extends \hiqdev\yii2\collection\Object implements \yii\base\ViewConte
     public function addMenus(array $items)
     {
         foreach ($items as $item) {
+            /// XXX ugly crutch, but no better ideas for the moment
+            $config = $item['menu'];
+            if (is_array($config) && empty($config['class'])) {
+                continue;
+            }
+
             $menu = Yii::createObject($item['menu']);
             $this->addItems($menu->getItems(), isset($item['where']) ? $item['where'] : null);
         }
