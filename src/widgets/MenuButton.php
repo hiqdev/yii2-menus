@@ -24,6 +24,11 @@ class MenuButton extends \yii\base\Widget
 
     public function run()
     {
+        $actionsMenu = $this->renderMenuItems();
+        if ($actionsMenu === '') {
+            return '';
+        }
+
         $this->getView()->registerCss('
         .menu-button .nav > li > a {
             padding: 5px 15px;
@@ -54,13 +59,6 @@ class MenuButton extends \yii\base\Widget
                 });
             })();
         ");
-        $class = $this->menuClass;
-        $actionsMenu = $class::widget([
-            'items' => $this->items,
-            'options' => [
-                'class' => 'nav',
-            ],
-        ]);
         $html = Html::beginTag('div', [
             'class' => 'menu-button visible-lg-inline visible-md-inline visible-sm-inline visible-xs-inline',
         ]);
@@ -77,5 +75,20 @@ class MenuButton extends \yii\base\Widget
         $html .= Html::endTag('div');
 
         return $html;
+    }
+
+    /**
+     * @return string
+     */
+    protected function renderMenuItems()
+    {
+        $class = $this->menuClass;
+
+        return $class::widget([
+            'items' => $this->items,
+            'options' => [
+                'class' => 'nav',
+            ],
+        ]);
     }
 }
