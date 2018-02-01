@@ -35,6 +35,11 @@ class MenuColumn extends DataColumn
     public $menuClass;
 
     /**
+     * @var array
+     */
+    public $menuButtonOptions = [];
+
+    /**
      * {@inheritdoc}
      */
     public function getDataCellValue($model, $key, $index)
@@ -43,7 +48,13 @@ class MenuColumn extends DataColumn
             return parent::getDataCellValue($model, $key, $index);
         } else {
             $class = $this->menuClass;
-            return $class::widget(['model' => $model], MenuButton::class);
+
+            return $class::widget(
+                ['model' => $model],
+                array_merge([
+                    'class' => MenuButton::class,
+                ], $this->menuButtonOptions)
+            );
         }
     }
 }
