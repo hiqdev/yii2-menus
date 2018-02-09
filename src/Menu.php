@@ -21,7 +21,7 @@ use yii\base\View;
  * @property array $add array of menus that will be added to the [[Menu]]
  * @property array $merge array of menus that will be merged into the [[Menu]]
  */
-class Menu extends \hiqdev\yii2\collection\Object implements \yii\base\ViewContextInterface
+class Menu extends \hiqdev\yii2\collection\BaseObject implements \yii\base\ViewContextInterface
 {
     /**
      * {@inheritdoc}
