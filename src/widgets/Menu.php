@@ -39,7 +39,12 @@ class Menu extends \yii\widgets\Menu
     /**
      * {@inheritdoc}
      */
-    public $linkTemplate = '<a href="{url}" {linkOptions}>{icon}&nbsp;{label}</a>';
+    public $linkTemplate = '<a href="{url}" {linkOptions}>{icon}{iconSpace}{label}</a>';
+
+    /**
+     * {@inheritdoc}
+     */
+    public $labelTemplate = '{icon}{iconSpace}{label}';
 
     /**
      * Try to guess which module is parent for current page
@@ -135,9 +140,12 @@ class Menu extends \yii\widgets\Menu
      */
     protected function renderItem($item)
     {
+        $no_icon = $item['icon'] === false || empty($item['url']) || empty($this->defaultIcon);
+
         return strtr(ArrayHelper::getValue($item, 'template', isset($item['url']) ? $this->linkTemplate : $this->labelTemplate), [
             '{url}' => isset($item['url']) ? Url::to($item['url']) : null,
-            '{icon}' => $item['icon'] === false ? '' : sprintf('<i class="%s"></i>', static::iconClass($item['icon'] ?: $this->defaultIcon)),
+            '{icon}' => $no_icon ? '' : sprintf('<i class="%s"></i>', static::iconClass($item['icon'] ?: $this->defaultIcon)),
+            '{iconSpace}' => $no_icon ? '' : '&nbsp;',
             '{label}' => $item['label'],
             '{arrow}' => !empty($item['items']) ? '<i class="fa pull-right fa-angle-left"></i>' : '',
             '{linkOptions}' => Html::renderTagAttributes(ArrayHelper::getValue($item, 'linkOptions', [])),
