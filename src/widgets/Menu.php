@@ -137,15 +137,10 @@ class Menu extends \yii\widgets\Menu
 
     /**
      * {@inheritdoc}
-     */
-
-
-    /**
-     * {@inheritdoc}
      *
      * @param array $item
      * Additional data might be in the item:
-     * - isNew: boolean, optional, determine if this item is new added and should be highlighted
+     * - isNew: boolean, optional, marks this item new and should be highlighted
      * - linkOptions: array, optional, the HTML attributes for the menu link tag
      * - icon: string, optional, https://fontawesome.com icon
      * - iconSpace: boolean, optional, added space after icon
@@ -164,8 +159,8 @@ class Menu extends \yii\widgets\Menu
             '{label}' => $item['label'],
             '{arrow}' => sprintf(
                 '<span class="pull-right-container">%s %s</span>',
-                (!empty($item['items']) ? '<small class="fa fa-angle-left pull-right "></small>' : ''),
-                ($item['isNew'] ? '<small class="label pull-right bg-red">new</small>' : '')
+                !empty($item['items']) ? '<small class="fa fa-angle-left pull-right "></small>' : '',
+                $item['isNew'] ? '<small class="label pull-right bg-red">new</small>' : ''
             ),
             '{linkOptions}' => Html::renderTagAttributes(ArrayHelper::getValue($item, 'linkOptions', [])),
         ]);
