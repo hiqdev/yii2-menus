@@ -138,6 +138,20 @@ class Menu extends \yii\widgets\Menu
     /**
      * {@inheritdoc}
      */
+
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param array $item
+     * Additional data might be in the item:
+     * - isNew: boolean, optional, determine if this item is new added and should be highlighted
+     * - linkOptions: array, optional, the HTML attributes for the menu link tag
+     * - icon: string, optional, https://fontawesome.com icon
+     * - iconSpace: boolean, optional, added space after icon
+     *
+     * @return string
+     */
     protected function renderItem($item)
     {
         $icon = isset($item['icon']) ? $item['icon'] : null;
@@ -148,7 +162,11 @@ class Menu extends \yii\widgets\Menu
             '{icon}' => $no_icon ? '' : sprintf('<i class="%s"></i>', static::iconClass($icon ?: $this->defaultIcon)),
             '{iconSpace}' => $no_icon ? '' : '&nbsp;',
             '{label}' => $item['label'],
-            '{arrow}' => !empty($item['items']) ? '<i class="fa pull-right fa-angle-left"></i>' : '',
+            '{arrow}' => sprintf(
+                '<span class="pull-right-container">%s %s</span>',
+                (!empty($item['items']) ? '<small class="fa fa-angle-left pull-right "></small>' : ''),
+                ($item['isNew'] ? '<small class="label pull-right bg-red">new</small>' : '')
+            ),
             '{linkOptions}' => Html::renderTagAttributes(ArrayHelper::getValue($item, 'linkOptions', [])),
         ]);
     }
