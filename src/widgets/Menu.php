@@ -160,7 +160,7 @@ class Menu extends \yii\widgets\Menu
             '{arrow}' => sprintf(
                 '<span class="pull-right-container">%s %s</span>',
                 !empty($item['items']) ? '<small class="fa fa-angle-left pull-right "></small>' : '',
-                $item['isNew'] ? '<small class="label pull-right bg-red">new</small>' : ''
+                ($item['isNew'] ?? false) ? '<small class="label pull-right bg-red">new</small>' : ''
             ),
             '{linkOptions}' => Html::renderTagAttributes(ArrayHelper::getValue($item, 'linkOptions', [])),
         ]);
