@@ -81,10 +81,9 @@ class Menu extends \yii\widgets\Menu
     {
         if ($route) {
             if (strpos($route, '/') !== false) {
-                list($id, $route) = explode('/', ltrim($route, '/'), 2);
+                [$id] = explode('/', ltrim($route, '/'), 2);
             } else {
                 $id = $route;
-                $route = '';
             }
 
             return $id;
@@ -149,7 +148,7 @@ class Menu extends \yii\widgets\Menu
      */
     protected function renderItem($item)
     {
-        $icon = isset($item['icon']) ? $item['icon'] : null;
+        $icon = $item['icon'] ?? null;
         $no_icon = $icon ? false : ($icon === false || empty($item['url']) || empty($this->defaultIcon));
 
         return strtr(ArrayHelper::getValue($item, 'template', isset($item['url']) ? $this->linkTemplate : $this->labelTemplate), [
@@ -168,7 +167,7 @@ class Menu extends \yii\widgets\Menu
 
     public static function iconClass($icon)
     {
-        return (substr($icon, 0, 3) === 'fa-' ? 'fa fa-fw ' : '') . $icon;
+        return (strpos($icon, 'fa-') === 0 ? 'fa fa-fw ' : '') . $icon;
     }
 
     /**
