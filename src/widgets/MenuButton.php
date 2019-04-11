@@ -41,7 +41,15 @@ class MenuButton extends \yii\base\Widget
             // Init popover
             ;(function () {
                 var actionsButton = $('.menu-button button[data-toggle=\"popover\"]');
-                actionsButton.popover();
+                var myDefaultWhiteList = $.fn.tooltip.Constructor.DEFAULTS.whiteList;
+                myDefaultWhiteList['*'].push(/^data-[confirm|params|form|pjax|method|target|toggle|whatever]+/);
+                actionsButton.popover({
+                    html : true,
+                    content: function() {
+                        var content = $(this).attr('data-popover-content');
+                        return  $(content).html();
+                    }
+                });
                 // Show one popover and hide other popovers
                 actionsButton.on('click', function (e) {
                     actionsButton.not(this).popover('hide');
@@ -59,6 +67,7 @@ class MenuButton extends \yii\base\Widget
                 });
             })();
         ");
+        $popoverContentId = 'menu-button-popover-content-' . $this->id;
         $html = Html::beginTag('div', [
             'class' => 'menu-button visible-lg-inline visible-md-inline visible-sm-inline visible-xs-inline',
         ]);
@@ -67,11 +76,11 @@ class MenuButton extends \yii\base\Widget
             'data' => [
                 'toggle' => 'popover',
                 'trigger' => 'click',
-                'content' => $actionsMenu,
-                'html' => 'true',
+                'popover-content' => '#' . $popoverContentId,
                 'placement' => 'bottom',
             ],
         ]);
+        $html .= Html::tag('div', $actionsMenu, ['id' => $popoverContentId, 'class' => 'hidden']);
         $html .= Html::endTag('div');
 
         return $html;
