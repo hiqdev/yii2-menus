@@ -43,6 +43,7 @@ class MenuButton extends \yii\base\Widget
                 var actionsButton = $('.menu-button button[data-toggle=\"popover\"]');
                 var myDefaultWhiteList = $.fn.tooltip.Constructor.DEFAULTS.whiteList;
                 myDefaultWhiteList['*'].push(/^data-[confirm|params|form|pjax|method|target|toggle|whatever]+/);
+                myDefaultWhiteList['*'].push(/^[style|class|onClick]+/);
                 actionsButton.popover({
                     html : true,
                     content: function() {
