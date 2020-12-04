@@ -104,7 +104,7 @@ class Menu extends \yii\widgets\Menu
             $tag = ArrayHelper::remove($options, 'tag', 'li');
             $class = [];
             $parentModuleUrl = isset($item['items']) ? $item : null;
-            $isAccordionOpen = $this->guessModule($item, $parentModuleUrl['url'][0]);
+            $isAccordionOpen = $this->guessModule($item, $parentModuleUrl['url'][0] ?? null);
             if ($item['active'] || $isAccordionOpen) {
                 $class[] = $this->activeCssClass;
             }
