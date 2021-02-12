@@ -43,7 +43,7 @@
     ],
     "require": {
         "php": ">7.0",
-        "hiqdev/yii2-collection": "<2.0 || dev-master"
+        "hiqdev/yii2-collection": "dev-master"
     },
     "require-dev": {
         "hiqdev/hidev-php": "<2.0",
