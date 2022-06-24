@@ -60,7 +60,8 @@ class Menu extends \yii\widgets\Menu
         if (!empty($item['items'])) {
             foreach ($item['items'] as $i) {
                 if (isset($i['url'])) {
-                    $itemModuleName = $this->getModuleName(reset($i['url']));
+                    $route = is_array($i['url']) ? $i['url'] : [$i['url']];
+                    $itemModuleName = $this->getModuleName(reset($route));
                     if ($itemModuleName === $moduleId && $parentModuleId === $moduleId) {
                         $result = true;
                         break;
